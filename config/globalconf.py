@@ -10,10 +10,21 @@
 ------------------------------------
 """
 import os
-
+import platform
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print(ROOT_DIR)
 APP_DIR = os.path.join(ROOT_DIR, "appPackage")
-print(APP_DIR)
+IMG_DIR = os.path.join(ROOT_DIR, "img")
+CASE_DIR = os.path.join(ROOT_DIR, 'cases')
+CONF_DIR = os.path.join(ROOT_DIR, 'config')
+DATA_DIR = os.path.join(ROOT_DIR, 'datas')
+REPORT_DIR = os.path.join(ROOT_DIR, "report")
 APK_PATH = os.path.join(APP_DIR, "Future-release-2018.apk")
+YML_PATH = os.path.join(CONF_DIR, "config.yml")
+ENVIRONMENT = \
+    "Windows Version:" + \
+    platform.system() + \
+    platform.version() + \
+    platform.release() + \
+    "Python Version" + \
+    platform.python_build()[0]

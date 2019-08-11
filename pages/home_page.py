@@ -9,22 +9,34 @@
 @GROUP: 878565760
 ------------------------------------
 """
-from pages.base.base import Base
-from pages.locator.pages_locator import HomePageLocator
+from .base.base import Base
+from .locator.pages_locator import HomePageLocator as Locator
 
 
 class HomePage(Base):
-    locator = HomePageLocator
+
+    def into_home_page(self):
+        self.skip_start_page()
+        return self.click_welcome()
+
+    def skip_start_page(self):
+        return self.skip_welcome_page("left")
 
     def click_myself(self):
-        self.click(self.locator.myself_btn)
+        return self.click(Locator.myself_btn)
 
     def click_welcome(self):
-        self.click(self.locator.welcome_btn)
+        return self.click(Locator.welcome_btn)
 
-    def skip_welcome_page(self):
-        for _ in range(4):
-            self.swipe_left()
+    def select_loan(self):
+        return self.click(Locator.invest_btn)
+
+    def click_more(self):
+        return self.click(Locator.more_loan)
+
+    def click_loan_btn(self):
+        return self.click(Locator.loan_btn)
+
 
 if __name__ == '__main__':
     pass
