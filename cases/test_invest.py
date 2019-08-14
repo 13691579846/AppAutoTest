@@ -11,65 +11,53 @@
 """
 import unittest
 from ddt import ddt, data
-from appium import webdriver
 
-from common.parseYaml import ParseYml
-from config.globalconf import APK_PATH, YML_PATH
-from pages.home_page import HomePage
-from pages.invest_page import InvestPage
-from pages.login_page import LoginPage
-from pages.user_page import UserPage
+from common.log import logger
 from datas.invest_data import InvestData
-
-phone = "13691579846"
-password = "****"
+from cases.unitcase.rootcase import UnitTest
 
 
 @ddt
-class TestInvest(unittest.TestCase):
+class TestInvest(UnitTest):
     """投资"""
-    conf = ParseYml(YML_PATH)
     invest_fail = InvestData.invest_fail
     invest_success = InvestData.invest_success
-
-    @classmethod
-    def setUpClass(cls):
-        desired = cls.conf.read_alone
-        desired["app"] = APK_PATH
-        cls.driver = webdriver.Remote(command_executor="http://127.0.0.1:4723/wd/hub",
-                                      desired_capabilities=desired)
-        cls.home_page = HomePage(cls.driver)
-        cls.login_page = LoginPage(cls.driver)
-        cls.user_page = UserPage(cls.driver)
-        cls.invest_page = InvestPage(cls.driver)
 
     def setUp(self):
         self.home_page.into_home_page()
         self.login_page.click_login_register_btn()
-        self.login_page.login("13691579846", 'xiaochao11520')
+        self.login_page.login(self.phone, self.password)
         self.user_page.click_cancel()
 
     @data(*invest_fail)
     def test_invest_fail(self, amount):
         self.home_page.select_loan()
         self.invest_page.invest(amount["amount"])
-        actual = self.invest_page.get_invest_toast(amount["expected"])
-        self.assertEqual(amount["expected"], actual)
+        actual = self.invest_page.get_invest_toast("投资金额")
+        try:
+            self.assertEqual(amount["expected"], actual)
+        except AssertionError as e:
+            logger.debug("fail")
+            raise e
+        else:
+            logger.info("pass")
 
     @data(*invest_success)
     def test_invest_success(self, amount):
         self.home_page.select_loan()
         self.invest_page.invest(amount["amount"])
         actual = self.invest_page.get_invest_success_massage
-        self.assertEqual(amount["expected"], actual)
+        try:
+            self.assertEqual(amount["expected"], actual)
+        except AssertionError as e:
+            logger.debug("fail")
+            raise e
+        else:
+            logger.info("pass")
 
     def tearDown(self):
         self.driver.reset()
-        self.driver.start_activity('com.xxzb.fenwoo', ".activity.addition.SplashActivity")
-
-    @classmethod
-    def tearDownClass(cls):
-        cls.driver.quit()
+        self.driver.start_activity(self.start_activity["package"], self.start_activity["activity"])
 
 
 if __name__ == '__main__':

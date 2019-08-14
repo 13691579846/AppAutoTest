@@ -11,6 +11,7 @@
 """
 from .base.base import Base
 from .locator.pages_locator import HomePageLocator as Locator
+from common.log import logger
 
 
 class HomePage(Base):
@@ -20,21 +21,27 @@ class HomePage(Base):
         return self.click_welcome()
 
     def skip_start_page(self):
+        logger.info("跳过欢迎页")
         return self.skip_welcome_page("left")
 
     def click_myself(self):
+        logger.info("点击[我的]菜单")
         return self.click(Locator.myself_btn)
 
     def click_welcome(self):
+        logger.info("点击[立即体验]按钮")
         return self.click(Locator.welcome_btn)
 
     def select_loan(self):
+        logger.info("点击[投标]按钮")
         return self.click(Locator.invest_btn)
 
     def click_more(self):
+        logger.info("点击[...]加载更多标")
         return self.click(Locator.more_loan)
 
     def click_loan_btn(self):
+        logger.info("点击[我要借款]按钮")
         return self.click(Locator.loan_btn)
 
 

@@ -13,6 +13,8 @@
 
 class RegisterData(object):
     """注册"""
+    phone = "13274517393"
+
     code_pwd_incorrect = [
         {
             "code": "",

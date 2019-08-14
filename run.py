@@ -12,12 +12,18 @@
 import unittest
 import os
 
-from config.globalconf import CASE_DIR, REPORT_DIR, ENVIRONMENT
+from config.globalconf import (CASE_DIR, REPORT_DIR, LOG_DIR, ENVIRONMENT)
 from common.dirAndTime import DirTime as Dt
+from common.log import logger
 from lib.HTMLTestRunner import HTMLTestRunner
 
 
+report_dir = REPORT_DIR
+log_dir = LOG_DIR
+
+
 def tc_suite():
+    logger.info("加载测试用例")
     suite = unittest.TestSuite()
     discover = unittest.defaultTestLoader.discover(
         start_dir=CASE_DIR,
@@ -28,9 +34,7 @@ def tc_suite():
 
 
 def report_name():
-    report_dir = REPORT_DIR
-    if not os.path.exists(report_dir):
-        report_dir = Dt.create_path(report_dir)
+    Dt.create_path(report_dir)
     html = Dt.file_name('html', 'report')
     return os.path.join(report_dir, html)
 
@@ -46,8 +50,10 @@ def main(report_path):
             verbosity=2
         )
         runner.run(suite)
+    logger.info("生成测试报告{}".format(report_path))
 
 
 if __name__ == '__main__':
+    Dt.create_path(log_dir)
     report = report_name()
     main(report)

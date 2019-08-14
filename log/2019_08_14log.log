@@ -1,0 +1,14 @@
+Wed, 14 Aug 2019 15:06:08-common.log-home_page.py-[line:24]-INFO-[日志信息]: 跳过欢迎页
+Wed, 14 Aug 2019 15:06:14-common.log-home_page.py-[line:32]-INFO-[日志信息]: 点击[立即体验]按钮
+Wed, 14 Aug 2019 15:06:14-common.log-login_page.py-[line:30]-INFO-[日志信息]: 点击[登录/注册]按钮
+Wed, 14 Aug 2019 15:06:17-common.log-login_page.py-[line:34]-INFO-[日志信息]: 输入[用户名]
+Wed, 14 Aug 2019 15:06:20-common.log-login_page.py-[line:43]-INFO-[日志信息]: 点击[下一步]按钮
+Wed, 14 Aug 2019 15:06:20-common.log-login_page.py-[line:39]-INFO-[日志信息]: 获取电话号码错误提示信息
+Wed, 14 Aug 2019 15:06:22-common.log-test_login.py-[line:65]-INFO-[日志信息]: pass
+Wed, 14 Aug 2019 15:06:28-common.log-home_page.py-[line:24]-INFO-[日志信息]: 跳过欢迎页
+Wed, 14 Aug 2019 15:06:34-common.log-home_page.py-[line:32]-INFO-[日志信息]: 点击[立即体验]按钮
+Wed, 14 Aug 2019 15:06:34-common.log-login_page.py-[line:30]-INFO-[日志信息]: 点击[登录/注册]按钮
+Wed, 14 Aug 2019 15:06:37-common.log-login_page.py-[line:34]-INFO-[日志信息]: 输入[用户名]1369157984
+Wed, 14 Aug 2019 15:06:40-common.log-login_page.py-[line:43]-INFO-[日志信息]: 点击[下一步]按钮
+Wed, 14 Aug 2019 15:06:41-common.log-login_page.py-[line:39]-INFO-[日志信息]: 获取电话号码错误提示信息
+Wed, 14 Aug 2019 15:06:42-common.log-test_login.py-[line:65]-INFO-[日志信息]: pass

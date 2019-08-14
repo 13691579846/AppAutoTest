@@ -30,7 +30,10 @@ class DirTime(object):
         :param context: 说明性文本拼接到文件名中
         :return: file name
         """
-        name = DirTime.current_date() + '_' + DirTime.current_time() + context + '.' + file_type
+        if file_type.lower() == "log":
+            name = DirTime.current_date() + context + ".log"
+        else:
+            name = DirTime.current_date() + '_' + DirTime.current_time() + context + '.' + file_type
         return name
 
     @staticmethod

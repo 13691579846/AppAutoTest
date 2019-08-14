@@ -51,17 +51,20 @@ class LoginData(object):
             "password": "linux超",  # 错误的密码
             "expected": "手机号或密码错误"
         }
-        # {
-        #     "phone": "13691579846",
-        #     "password": "",  # 密码为空
-        #     "expected": False
-        # }
+    ]
+
+    login_password_null = [
+        {
+            "phone": "13691579846",
+            "password": "",  # 密码为空
+            "expected": True
+        }
     ]
 
     login_success = [
         {
             "phone": "13691579846",
-            "password": "linuxchao",
+            "password": "xiaochao11520",
             "expected": "小蜜蜂"
         }
     ]

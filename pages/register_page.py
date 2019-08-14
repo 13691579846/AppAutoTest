@@ -11,6 +11,7 @@
 """
 from .base.base import Base
 from .locator.pages_locator import RegisterLocator as Locator
+from common.log import logger
 
 
 class RegisterPage(Base):
@@ -28,27 +29,35 @@ class RegisterPage(Base):
 
     @property
     def get_register_text(self):
+        logger.info("获取[注册]按钮文本信息")
         return self.get_element_text(Locator.register_btn)
 
     def input_verify_code(self, code):
+        logger.info("输入[验证码]{}".format(code))
         return self.input_value(Locator.verify_code, code)
 
     def input_login_password(self, password):
+        logger.info("输入[登录密码]{}".format(password))
         return self.input_value(Locator.login_password, password)
 
     def input_verify_password(self, password):
+        logger.info("输入[确认密码]{}".format(password))
         return self.input_value(Locator.confirm_password, password)
 
     def click_agree(self):
+        logger.info("点击[我已阅读并同意]按钮")
         return self.click(Locator.agree_btn)
 
     def click_register_btn(self):
+        logger.info("点击[注册]按钮")
         return self.click(Locator.register_btn)
 
     @property
     def get_register_fail_massage(self):
+        logger.info("获取注册失败的提示信息")
         return self.get_element_text(Locator.register_message)
 
     @property
     def get_register_toast_massage(self):
+        logger.info("获取注册失败的toast信息")
         return self.get_toast("验证码错误或已过期")

@@ -19,6 +19,7 @@ CASE_DIR = os.path.join(ROOT_DIR, 'cases')
 CONF_DIR = os.path.join(ROOT_DIR, 'config')
 DATA_DIR = os.path.join(ROOT_DIR, 'datas')
 REPORT_DIR = os.path.join(ROOT_DIR, "report")
+LOG_DIR = os.path.join(ROOT_DIR, 'log')
 APK_PATH = os.path.join(APP_DIR, "Future-release-2018.apk")
 YML_PATH = os.path.join(CONF_DIR, "config.yml")
 ENVIRONMENT = \

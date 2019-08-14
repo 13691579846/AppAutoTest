@@ -1,8 +1,8 @@
-"automationName": "uiautomator2"
-"platformName": "Android"
-"platformVersion": '5.1.1'
-"deviceName": "127.0.0.1:62001"
-"appPackage": "com.xxzb.fenwoo"
-"appActivity": "com.xxzb.fenwoo.activity.addition.WelcomeActivity"
-"unicodeKeyboard": True
-"resetKeyboard": True
+automationName: UiAutomator2
+platformName: Android
+platformVersion: '5.1.1'
+deviceName: "127.0.0.1:62001"
+appPackage: "com.xxzb.fenwoo"
+appActivity: "com.xxzb.fenwoo.activity.addition.WelcomeActivity"
+unicodeKeyboard: True
+resetKeyboard: True

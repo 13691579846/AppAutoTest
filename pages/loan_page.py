@@ -11,6 +11,7 @@
 """
 from .base.base import Base
 from .locator.pages_locator import LoanPageLocator as Locator
+from common.log import logger
 
 
 class LoanPage(Base):
@@ -58,15 +59,19 @@ class LoanPage(Base):
         return self.select_address_second_option(address)
 
     def input_loan_amount(self, amount):
+        logger.info("输入[投资金额]{}".format(amount))
         return self.input_value(Locator.loan_amount_input, amount)
 
     def click_next_setup(self):
+        logger.info("点击[下一步]按钮")
         return self.click(Locator.next_setup)
 
     def input_loan_rate(self, rate):
+        logger.info("输入[借款利率]{}".format(rate))
         return self.input_value(Locator.loan_rate, rate)
 
     def click_loan_bidding(self):
+        logger.info("点击[竞标天数]按钮")
         return self.click(Locator.loan_bidding_btn)
 
     def select_loan_bidding_option(self, bidding_day):
@@ -78,9 +83,11 @@ class LoanPage(Base):
             "4天": 3,
             "5天": 4
         }
+        logger.info("选择[竞标天数]选项{}".format(bidding_day))
         return self.select_list_option(Locator.loan_options, days_option[bidding_day])
 
     def click_loan_uses(self):
+        logger.info("点击[借款用途]按钮")
         return self.click(Locator.loan_uses_btn)
 
     def select_loan_uses_option(self, uses):
@@ -93,6 +100,7 @@ class LoanPage(Base):
             "逾期周转": 5,
             "创业借款": 6
         }
+        logger.info("选择[借款用途]选项{}".format(uses))
         return self.select_list_option(Locator.loan_options, uses_option[uses])
 
     def click_loan_limit(self):
@@ -103,6 +111,7 @@ class LoanPage(Base):
             "按天": 0,
             "按月": 1
         }
+        logger.info("选择[借款期限]的一级选项{}".format(limit))
         return self.select_list_option(Locator.loan_options, limit_option[limit])
 
     def select_loan_limit_day_option(self, option):
@@ -115,6 +124,7 @@ class LoanPage(Base):
             "6天": 5,
             "7天": 6
         }
+        logger.info("按天-选择借款期限的二级选项{}".format(option))
         return self.select_list_option(Locator.loan_options, day_option[option])
 
     def select_loan_limit_mouth_option(self, option):
@@ -127,9 +137,11 @@ class LoanPage(Base):
             "6月": 5,
             "7月": 6
         }
+        logger.info("按月-选择借款期限的二级选项{}".format(option))
         return self.select_list_option(Locator.loan_options, mouth_option[option])
 
     def click_payment(self):
+        logger.info("点击[还款方式]按钮")
         return self.click(Locator.loan_payment_btn)
 
     def select_payment_option(self, payment):
@@ -139,6 +151,7 @@ class LoanPage(Base):
             "按月等额本息线下": 2,
             "按月等额本息": 3
         }
+        logger.info("选择[还款方式]选项{}".format(payment))
         return self.select_list_option(Locator.loan_options, payment_option[payment])
 
     def click_loan_address(self):
@@ -149,6 +162,7 @@ class LoanPage(Base):
             "北京": 0,
             "天津": 1
         }
+        logger.info("选择[您的位置]一级选项{}".format(address))
         return self.select_list_option(Locator.loan_options, address_option[address])
 
     def select_address_second_option(self, address):
@@ -156,27 +170,34 @@ class LoanPage(Base):
             "北京": 0,
             "天津": 1
         }
+        logger.info("选择[您的位置]二级选项{}".format(address))
         return self.select_list_option(Locator.loan_options, address_second_option[address])
 
     def click_submit(self):
+        logger.info("点击[提交]按钮")
         return self.click(Locator.submit_btn)
 
     @property
     def get_submit_text(self):
+        logger.info("获取提交按钮文本信息")
         return self.get_element_text(Locator.submit_btn)
 
     @property
     def get_fail_massage(self):
+        logger.info("获取投资失败的提示信息")
         return self.get_element_text(Locator.error_info)
 
     def close_fail_massage(self):
+        logger.info("关闭投资失败提示框")
         return self.click(Locator.error_commit_btn)
 
     @property
     def get_loan_success_info(self):
+        logger.info("获取投资成功提示信息")
         return self.get_element_text(Locator.loan_success_info)
 
     def click_success_confirm(self):
+        logger.info("投资成功提示框，点击[确认]按钮")
         return self.click(Locator.loan_success_confirm_btn)
 
 

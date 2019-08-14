@@ -5,7 +5,7 @@ generates a HTML report to show the result at a glance.
 
 The simplest way to use this is to invoke its main method. E.g.
 
-    import unittest
+    import unitcase
     import HTMLTestRunner
 
     ... define your tests ...
@@ -15,7 +15,7 @@ The simplest way to use this is to invoke its main method. E.g.
 
 
 For more customization options, instantiates a HTMLTestRunner object.
-HTMLTestRunner is a counterpart to unittest's TextTestRunner. E.g.
+HTMLTestRunner is a counterpart to unitcase's TextTestRunner. E.g.
 
     # output to a file
     fp = file('my_report.html', 'wb')
@@ -676,7 +676,7 @@ TestResult = unittest.TestResult
 
 class _TestResult(TestResult):
     # note: _TestResult is a pure representation of results.
-    # It lacks the output and reporting ability compares to unittest._TextTestResult.
+    # It lacks the output and reporting ability compares to unitcase._TextTestResult.
 
     def __init__(self, verbosity=1, retry=0, save_last_try=True):
         TestResult.__init__(self)
@@ -731,7 +731,7 @@ class _TestResult(TestResult):
 
     def stopTest(self, test):
         # Usually one of addSuccess, addError or addFailure would have been called.
-        # But there are some path in unittest that would bypass this.
+        # But there are some path in unitcase that would bypass this.
         # We must disconnect stdout in stopTest(), which is guaranteed to be called.
         if self.retry:
             if self.status == 1:
@@ -860,7 +860,7 @@ class HTMLTestRunner(Template_mixin):
         return result
 
     def sortResult(self, result_list):
-        # unittest does not seems to run in any particular order.
+        # unitcase does not seems to run in any particular order.
         # Here at least we want to group them together by class.
         rmap = {}
         classes = []
@@ -1064,12 +1064,12 @@ class HTMLTestRunner(Template_mixin):
 # Facilities for running tests from the command line
 ##############################################################################
 
-# Note: Reuse unittest.TestProgram to launch test. In the future we may
+# Note: Reuse unitcase.TestProgram to launch test. In the future we may
 # build our own launcher to support more specific command line
 # parameters like test title, CSS, etc.
 class TestProgram(unittest.TestProgram):
     """
-    A variation of the unittest.TestProgram. Please refer to the base
+    A variation of the unitcase.TestProgram. Please refer to the base
     class for command line parameters.
     """
 
