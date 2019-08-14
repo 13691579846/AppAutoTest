@@ -11,6 +11,7 @@
 """
 import unittest
 from ddt import ddt, data
+import inspect
 
 from common.log import logger
 from datas.loan_data import LoanData
@@ -26,6 +27,7 @@ class TestLoan(UnitTest):
     loan_success_data = LoanData.loan_success
 
     def setUp(self):
+        logger.info("开始执行测试用例")
         self.home_page.into_home_page()
         self.login_page.click_login_register_btn()
         self.login_page.login(self.phone, self.password)
@@ -39,10 +41,10 @@ class TestLoan(UnitTest):
         try:
             self.assertEqual(amount["expected"], actual)
         except AssertionError as e:
-            logger.debug("fail")
+            logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
             raise e
         else:
-            logger.info("pass")
+            logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
 
     @data(*loan_amount_success_data)
     def test_loan_amount_success(self, amount):
@@ -51,10 +53,10 @@ class TestLoan(UnitTest):
         try:
             self.assertEqual(amount["expected"], actual)
         except AssertionError as e:
-            logger.debug("fail")
+            logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
             raise e
         else:
-            logger.info("pass")
+            logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
 
     @data(*loan_fail_data)
     def test_loan_fail(self, loan):
@@ -71,10 +73,10 @@ class TestLoan(UnitTest):
         try:
             self.assertEqual(loan["expected"], actual)
         except AssertionError as e:
-            logger.debug("fail")
+            logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
             raise e
         else:
-            logger.info("pass")
+            logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
 
     @data(*loan_success_data)
     def test_loan_success(self, loan):
@@ -91,14 +93,15 @@ class TestLoan(UnitTest):
         try:
             self.assertEqual(loan["expected"], actual)
         except AssertionError as e:
-            logger.debug("fail")
+            logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
             raise e
         else:
-            logger.info("pass")
+            logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
 
     def tearDown(self):
         self.driver.reset()
         self.driver.start_activity(self.start_activity["package"], self.start_activity["activity"])
+        logger.info("执行测试用例结束")
 
 
 if __name__ == '__main__':

@@ -15,7 +15,8 @@ class RegisterData(object):
     """注册"""
     phone = "13274517393"
 
-    code_pwd_incorrect = [
+    # 缺少必填项
+    lack_required_items = [
         {
             "code": "",
             "login_pwd": "linuxxiaochao123",
@@ -46,21 +47,27 @@ class RegisterData(object):
         }
     ]
 
-    code_agree_pwd_error = [
+    code_incorrect = [
         {
             "code": "123451",
             "login_pwd": "linuxxiaochao",
             "verify_pwd": "linuxxiaochao",
             "agree": 1,
             "expected": "验证码错误或已过期"
-        },
+        }
+    ]
+
+    non_agree = [
         {
             "code": "123452",
             "login_pwd": "linuxxiaochao123",
             "verify_pwd": "linuxxiaochao123",
             "agree": 0,
             "expected": "请阅读并同意"
-        },
+        }
+    ]
+
+    password_format_error = [
         {
             "code": "123453",
             "login_pwd": "linuxxiaochao",

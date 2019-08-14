@@ -19,6 +19,7 @@ from pages.user_page import UserPage
 from pages.invest_page import InvestPage
 from pages.register_page import RegisterPage
 from common.parseYaml import ParseYml
+from common.log import logger
 from config.globalconf import YML_PATH, APK_PATH
 
 
@@ -31,6 +32,7 @@ class UnitTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        logger.info("开始执行测试类")
         desired = cls.conf.read_alone
         desired["app"] = APK_PATH
         cls.driver = webdriver.Remote(command_executor="http://127.0.0.1:4723/wd/hub",
@@ -45,6 +47,7 @@ class UnitTest(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
+        logger.info("执行测试类结束")
 
 
 if __name__ == '__main__':

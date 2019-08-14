@@ -58,6 +58,16 @@ class RegisterPage(Base):
         return self.get_element_text(Locator.register_message)
 
     @property
-    def get_register_toast_massage(self):
-        logger.info("获取注册失败的toast信息")
+    def get_code_incorrect(self):
+        logger.info("获取验证码错误时toast信息")
         return self.get_toast("验证码错误或已过期")
+
+    @property
+    def get_non_agree(self):
+        logger.info("获取不勾选协议时toast信息")
+        return self.get_toast("请阅读并同意")
+
+    @property
+    def get_password_format_incorrect(self):
+        logger.info("获取密码格式错误时toast信息")
+        return self.get_toast("密码格式错误")

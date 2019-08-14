@@ -170,7 +170,7 @@ class Base(object):
         """等待元素出现在DOM中，但是不一定是可见的"""
         wait = WebDriverWait(self.driver, timeout, 0.01)
         try:
-            element = wait.until(ec.presence_of_all_elements_located(locator))
+            element = wait.until(ec.presence_of_element_located(locator))
             return element
         except TimeoutException as e:
             logger.error("the element {} not presence".format(locator[1]))
@@ -260,14 +260,14 @@ class Base(object):
         """text: toast的文本值
         只支持appium server 版本在1.6.3以上，且"automationName"为"uiautomator2"
         """
-        locator = (MobileBy.XPATH, "//*[@text='{}']".format(context))
+        locator = (MobileBy.XPATH, "//*[contains(@text, '{}')]".format(context))
         toast = self.wait_element_presence(locator)
         try:
             try:
-                text = toast.text
+                cont = toast.text
             except AttributeError:
-                text = toast.get_attribute("text")
-            return text
+                cont = toast.get_attribute("text")
+            return cont
         except AttributeError as e:
             logger.error("get context of toast fail")
             raise e
