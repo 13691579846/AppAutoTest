@@ -57,6 +57,7 @@ class TestLogin(UnitTest):
             self.assertEqual(login_dict["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.login_page.screen_shot("phone_format_incorrect")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
@@ -70,6 +71,7 @@ class TestLogin(UnitTest):
             self.assertEqual(login_dict["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.login_page.screen_shot("phone_registered")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
@@ -83,6 +85,7 @@ class TestLogin(UnitTest):
             self.assertEqual(login_dict["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.login_page.screen_shot("phone_unregister")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
@@ -96,6 +99,7 @@ class TestLogin(UnitTest):
             self.assertEqual(login_dict["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.login_page.screen_shot("password_error")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
@@ -109,6 +113,7 @@ class TestLogin(UnitTest):
             self.assertTrue(login_dict["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.login_page.screen_shot("password_null")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
@@ -124,6 +129,7 @@ class TestLogin(UnitTest):
             self.assertIn(login_dict["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.login_page.screen_shot("login_success")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
@@ -138,6 +144,7 @@ class TestLogin(UnitTest):
             self.assertEqual(login_dict["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.login_page.screen_shot("phone_incorrect")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
@@ -165,6 +172,7 @@ class TestLogin(UnitTest):
             self.assertEqual(login_dict["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.login_page.screen_shot("phone_registered")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
@@ -178,6 +186,7 @@ class TestLogin(UnitTest):
             self.assertEqual(login_dict["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.login_page.screen_shot("phone_unregister")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
@@ -191,6 +200,7 @@ class TestLogin(UnitTest):
             self.assertEqual(login_dict["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.login_page.screen_shot("password_error")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
@@ -205,13 +215,13 @@ class TestLogin(UnitTest):
             self.assertIn(login_dict["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.login_page.screen_shot("login_success")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
 
     def tearDown(self):
         self.driver.reset()
-        self.driver.start_activity(self.start_activity["package"], self.start_activity["activity"])
         logger.info("测试用例执行结束")
 
 

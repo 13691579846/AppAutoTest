@@ -43,7 +43,7 @@ class LoanData(object):
         }
     ]
 
-    loan_fail = [
+    loan_lack_required_items = [
         {
             "amount": "50000",
             "rate": "",

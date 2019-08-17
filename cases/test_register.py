@@ -45,6 +45,7 @@ class TestRegister(UnitTest):
             self.assertEqual(register_dict["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.register_page.screen_shot("lack_required")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
@@ -61,6 +62,7 @@ class TestRegister(UnitTest):
             self.assertIn(register_dict["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.register_page.screen_shot("code_incorrect")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
@@ -77,6 +79,7 @@ class TestRegister(UnitTest):
             self.assertIn(register_dict["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.register_page.screen_shot("non_agree")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
@@ -93,13 +96,13 @@ class TestRegister(UnitTest):
             self.assertIn(register_dict["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.register_page.screen_shot("pwd_format_error")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
 
     def tearDown(self):
         self.driver.reset()
-        self.driver.start_activity(self.start_activity["package"], self.start_activity["activity"])
         logger.info("测试用例执行结束")
 
 

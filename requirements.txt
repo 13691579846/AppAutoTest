@@ -1,5 +1,8 @@
-PyYAML
-ddt
 Appium-Python-Client==0.46
+ddt==1.2.1
+et-xmlfile==1.0.1
+jdcal==1.4.1
+openpyxl==2.6.2
+PyYAML==5.1.2
 selenium==3.141.0
 urllib3==1.25.3

@@ -23,7 +23,7 @@ class TestLoan(UnitTest):
     """借款"""
     loan_amount_fail_data = LoanData.loan_amount_none
     loan_amount_success_data = LoanData.loan_amount_success
-    loan_fail_data = LoanData.loan_fail
+    loan_fail_data = LoanData.loan_lack_required_items
     loan_success_data = LoanData.loan_success
 
     def setUp(self):
@@ -42,6 +42,7 @@ class TestLoan(UnitTest):
             self.assertEqual(amount["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.loan_page.screen_shot("amount_error")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
@@ -54,12 +55,13 @@ class TestLoan(UnitTest):
             self.assertEqual(amount["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.loan_page.screen_shot("amount_success")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
 
     @data(*loan_fail_data)
-    def test_loan_fail(self, loan):
+    def test_loan_lack_required_items(self, loan):
         self.loan_page.loan_amount(loan["amount"])
         self.loan_page.loan_business(loan["rate"],
                                      loan["bidding"],
@@ -74,6 +76,7 @@ class TestLoan(UnitTest):
             self.assertEqual(loan["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.loan_page.screen_shot("lack_required")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
@@ -94,13 +97,13 @@ class TestLoan(UnitTest):
             self.assertEqual(loan["expected"], actual)
         except AssertionError as e:
             logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+            self.loan_page.screen_shot("loan_success")
             raise e
         else:
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
 
     def tearDown(self):
         self.driver.reset()
-        self.driver.start_activity(self.start_activity["package"], self.start_activity["activity"])
         logger.info("执行测试用例结束")
 
 

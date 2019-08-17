@@ -50,8 +50,8 @@ class RegisterData(object):
     code_incorrect = [
         {
             "code": "123451",
-            "login_pwd": "linuxxiaochao",
-            "verify_pwd": "linuxxiaochao",
+            "login_pwd": "linuxxiaochao123",
+            "verify_pwd": "linuxxiaochao123",
             "agree": 1,
             "expected": "验证码错误或已过期"
         }

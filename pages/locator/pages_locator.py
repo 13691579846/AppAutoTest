@@ -124,8 +124,8 @@ class LoanPageLocator(object):
     # 天数, 用途, 期限, 还款方式 列表选项
     loan_options = \
         (MobileBy.XPATH,
-         '//android.widget.ListView[@resource-id=\"com.xxzb.fenwoo:id/listView\"]'
-         '/android.widget.RelativeLayout')
+         '//android.widget.ListView[@resource-id=\"com.xxzb.fenwoo:id/listView\"]/android.widget.RelativeLayout')
+    # '//android.widget.ListView[@resource-id=\"com.xxzb.fenwoo:id/listView\"]/android.widget.RelativeLayout[3]'
     loan_success_info = (MobileBy.ID, 'com.xxzb.fenwoo:id/tv_title')
     loan_success_confirm_btn = (MobileBy.ID, 'com.xxzb.fenwoo:id/btn_confirm')
 

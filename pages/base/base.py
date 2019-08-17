@@ -78,6 +78,7 @@ class Base(object):
             for _ in range(num):
                 getattr(self, direction_dic[direction])(duration)  # 使用反射执行不同的滑动方法
         else:
+            self.screen_shot("code_error")
             logger.error("参数{}不存在, direction可以为{}中任意一个字符串".
                          format(direction, direction_dic.keys()))
             raise ValueError("参数{}不存在, direction可以为{}任意一个字符串".
@@ -145,6 +146,7 @@ class Base(object):
             element = wait.until(lambda driver: driver.find_element(*locator))
             return element
         except TimeoutException as e:
+            self.screen_shot("code_error")
             logger.error('no found element {} by {}'.format(locator[1], locator[0]))
             raise e
 
@@ -154,6 +156,7 @@ class Base(object):
             elements = wait.until(lambda driver: driver.find_elements(*locator))
             return elements
         except TimeoutException as e:
+            self.screen_shot("code_error")
             logger.error('no found elements {} by {}'.format(locator[1], locator[0]))
             raise e
 
@@ -163,6 +166,7 @@ class Base(object):
             element.clear()
             element.send_keys(value)
         else:
+            self.screen_shot("code_error")
             logger.error("the element not found, so doesn't input value")
             raise NoSuchElementException("the element not found, so doesn't input value")
 
@@ -173,6 +177,7 @@ class Base(object):
             element = wait.until(ec.presence_of_element_located(locator))
             return element
         except TimeoutException as e:
+            self.screen_shot("code_error")
             logger.error("the element {} not presence".format(locator[1]))
             raise e
 
@@ -183,6 +188,7 @@ class Base(object):
             element = wait.until(ec.visibility_of_element_located(locator))
             return element
         except TimeoutException as e:
+            self.screen_shot("code_error")
             logger.error("the element {} invisibility".format(locator[1]))
             raise e
 
@@ -192,6 +198,7 @@ class Base(object):
             element = wait.until(ec.element_to_be_clickable(locator))
             return element
         except TimeoutException as e:
+            self.screen_shot("code_error")
             logger.error("the element  {} not clickable".format(locator[1]))
             raise e
 
@@ -204,6 +211,7 @@ class Base(object):
                 context = element.get_attribute('value')
             return context
         except AttributeError as e:
+            self.screen_shot("code_error")
             logger.error("get context of element {} fail".format(locator[1]))
             raise e
 
@@ -213,6 +221,7 @@ class Base(object):
             ele_attribute = element.get_attribute(attribute)
             return ele_attribute
         except AttributeError as e:
+            self.screen_shot("code_error")
             logger.error("get attribute of element fail with attribute {}".format(attribute))
             raise e
 
@@ -229,6 +238,7 @@ class Base(object):
         if element:
             return element.click()
         else:
+            self.screen_shot("code_error")
             logger.error("the element not found, so un-clickable")
             raise NoSuchElementException("the element not found, so un-clickable")
 
@@ -269,6 +279,7 @@ class Base(object):
                 cont = toast.get_attribute("text")
             return cont
         except AttributeError as e:
+            self.screen_shot("code_error")
             logger.error("get context of toast fail")
             raise e
 

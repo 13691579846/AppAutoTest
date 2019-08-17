@@ -26,17 +26,16 @@ from config.globalconf import YML_PATH, APK_PATH
 class UnitTest(unittest.TestCase):
     driver = None
     conf = ParseYml(YML_PATH)
-    start_activity = {"package": "com.xxzb.fenwoo", "activity": ".activity.addition.SplashActivity"}
-    phone = "13691579846"
-    password = "xiaochao11520"
+    phone = "****"
+    password = "****"
 
     @classmethod
     def setUpClass(cls):
         logger.info("开始执行测试类")
-        desired = cls.conf.read_alone
-        desired["app"] = APK_PATH
+        cls.desired = cls.conf.read_alone
+        cls.desired["app"] = APK_PATH
         cls.driver = webdriver.Remote(command_executor="http://127.0.0.1:4723/wd/hub",
-                                      desired_capabilities=desired)
+                                      desired_capabilities=cls.desired)
         cls.home_page = HomePage(cls.driver)
         cls.login_page = LoginPage(cls.driver)
         cls.loan_page = LoanPage(cls.driver)

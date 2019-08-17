@@ -19,22 +19,22 @@ class InvestData(object):
             "expected": "请输入投资金额"
         },
         {
-            "amount": 0,
+            "amount": "0",
             "expected": "最小投资金额为100.0"
         },
         {
-            "amount": 99,
+            "amount": "99",
             "expected": "投资金额必须为100的整数倍"
         },
         {
-            "amount": 101,
+            "amount": "101",
             "expected": "投资金额必须为100的整数倍"
         }
     ]
 
     invest_success = [
         {
-            "amount": 100,
+            "amount": "100",
             "expected": "投资成功"
         }
     ]
