@@ -26,15 +26,15 @@ from config.globalconf import YML_PATH, APK_PATH
 class UnitTest(unittest.TestCase):
     driver = None
     conf = ParseYml(YML_PATH)
-    phone = "****"
-    password = "****"
+    phone = "13691579846"
+    password = "xiaochao11520"
 
     @classmethod
     def setUpClass(cls):
         logger.info("开始执行测试类")
         cls.desired = cls.conf.read_alone
         cls.desired["app"] = APK_PATH
-        cls.driver = webdriver.Remote(command_executor="http://127.0.0.1:4723/wd/hub",
+        cls.driver = webdriver.Remote(command_executor="http://192.168.1.103:4723/wd/hub",
                                       desired_capabilities=cls.desired)
         cls.home_page = HomePage(cls.driver)
         cls.login_page = LoginPage(cls.driver)

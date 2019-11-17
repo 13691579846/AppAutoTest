@@ -31,19 +31,19 @@ class TestInvest(UnitTest):
         self.login_page.login(self.phone, self.password)
         self.user_page.click_cancel()
 
-    @data(*invest_fail)
-    def test_invest_fail(self, amount):
-        self.home_page.select_loan()
-        self.invest_page.invest(amount["amount"])
-        actual = self.invest_page.get_invest_toast("投资金额")
-        try:
-            self.assertEqual(amount["expected"], actual)
-        except AssertionError as e:
-            logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
-            self.invest_page.screen_shot("invest_fail")
-            raise e
-        else:
-            logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
+    # @data(*invest_fail)
+    # def test_invest_fail(self, amount):
+    #     self.home_page.select_loan()
+    #     self.invest_page.invest(amount["amount"])
+    #     actual = self.invest_page.get_invest_toast("投资金额")
+    #     try:
+    #         self.assertEqual(amount["expected"], actual)
+    #     except AssertionError as e:
+    #         self.invest_page.screen_shot("invest_fail")
+    #         logger.debug("测试用例:{}->失败:{}".format(inspect.stack()[0][3], e))
+    #         raise e
+    #     else:
+    #         logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
 
     @data(*invest_success)
     def test_invest_success(self, amount):
@@ -60,7 +60,7 @@ class TestInvest(UnitTest):
             logger.info("测试用例:{}->通过".format(inspect.stack()[0][3]))
 
     def tearDown(self):
-        self.driver.reset()
+        # self.driver.reset()
         logger.info("执行测试用例结束")
 
 

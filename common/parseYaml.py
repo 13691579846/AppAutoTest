@@ -41,5 +41,5 @@ class ParseYml(object):
 
 if __name__ == '__main__':
     yml = ParseYml(YML_PATH)
-    con = yml.read_alone()
+    con = yml.read_alone
     print(con)

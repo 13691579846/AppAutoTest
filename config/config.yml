@@ -6,3 +6,4 @@ appPackage: "com.xxzb.fenwoo"
 appActivity: "com.xxzb.fenwoo.activity.addition.WelcomeActivity"
 unicodeKeyboard: True
 resetKeyboard: True
+noReset: false

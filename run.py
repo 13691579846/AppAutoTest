@@ -16,6 +16,7 @@ from config.globalconf import (CASE_DIR, REPORT_DIR, LOG_DIR, ENVIRONMENT)
 from common.dirAndTime import DirTime as Dt
 from common.log import logger
 from lib.HTMLTestRunner import HTMLTestRunner
+# from BeautifulReport import BeautifulReport
 
 
 report_dir = REPORT_DIR
@@ -27,7 +28,7 @@ def tc_suite():
     suite = unittest.TestSuite()
     discover = unittest.defaultTestLoader.discover(
         start_dir=CASE_DIR,
-        pattern="test_*.py"
+        pattern="test_invest.py"
     )
     suite.addTest(discover)
     return suite
@@ -47,7 +48,8 @@ def main(report_path):
             description=ENVIRONMENT,
             title="app自动化测试",
             tester="linux超",
-            verbosity=2
+            verbosity=2,
+            retry=0
         )
         runner.run(suite)
     logger.info("生成测试报告{}".format(report_path))

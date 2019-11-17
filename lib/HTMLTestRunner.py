@@ -809,6 +809,8 @@ class _TestResult(TestResult):
             try:
                 driver = getattr(test, "driver")
                 test.imgs.append(driver.get_screenshot_as_base64())
+                # print("存储的图片信息为：", test.imgs)
+                # print(len(test.imgs))
             except Exception as e:
                 pass
         if self.verbosity > 1:

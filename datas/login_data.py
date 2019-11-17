@@ -63,8 +63,8 @@ class LoginData(object):
 
     login_success = [
         {
-            "phone": "****",
-            "password": "****",
+            "phone": "13691579846",
+            "password": "xiaochao11520",
             "expected": "小蜜蜂"
         }
     ]
